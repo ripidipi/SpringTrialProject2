@@ -17,18 +17,4 @@ public class HelloController {
     public String sayHello() {
         return "hello_world";
     }
-
-    @Autowired
-    private ServletContext servletContext;
-
-    @GetMapping("/diag-file")
-    @ResponseBody
-    public String diagFile() throws IOException {
-
-        String real = servletContext.getRealPath("/WEB-INF/views/hello_world.html");
-        try (InputStream is = servletContext.getResourceAsStream("/WEB-INF/views/hello_world.html")) {
-            return "realPath=" + real + "\nstream=" + (is == null ? "NULL" : ("OK size=" + is.available()));
-        }
-    }
-
 }
